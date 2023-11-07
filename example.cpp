@@ -73,10 +73,10 @@ int main(void) {
 		initial, TARGET, get_fitness, mating_fn, mutating_fn
 	);
 
-	int tmp = 0;
+	unsigned tmp = 0;
 
-	while (algo.get_best().fitness > 0 || tmp >= simpleGA_defaults::max_epoch) {
-		auto tmp = algo.get_epoch();
+	while (algo.get_best().fitness > 0 && tmp < simpleGA_defaults::max_epoch) {
+		tmp = algo.get_epoch();
 		if (tmp % 10 == 0) {
 			std::cout << "Epochs: " << tmp << ", Solution: " << algo.get_best().genome << std::endl;
 		}
